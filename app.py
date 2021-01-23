@@ -24,6 +24,20 @@ def create_app():
     @app.route("/chess-input-1", methods=['GET', 'POST'])
     def input_page_1():
         nonlocal piece
+        nonlocal color
+        nonlocal row
+        nonlocal column
+        nonlocal position
+        if piece:
+            piece = None
+        if color:
+            color = None
+        if row:
+            row = None
+        if column:
+            column = None
+        if position:
+            position = None
         message = None
         valid = 0
         if request.method == "POST":
