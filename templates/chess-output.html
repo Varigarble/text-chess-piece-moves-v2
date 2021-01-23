@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block content %}
+    <main class="main">
+        <h4 class="instruction">Your piece can move and capture as pictured.</h4>
+            <a href="/"><button type="button" class="form__submit">Restart</button></a>
+        <section>
+            {% if message %}
+            <h4>{{ message }}</h4>
+            {% endif %}
+            <h3><span class="container">
+                {% if piece %}
+                    {{ piece }}
+                {% endif %}
+                {% if color %}
+                    {{ color }}
+                {% endif %}
+                {% if row %}
+                    {{ row }}
+                {% endif %}
+                {% if column %}
+                    {{ column }}
+                {% endif %}
+                {% if position %}
+                    {{ position }}
+                {% endif %}
+            </span></h3>
+        </section>
+        <table class="board">
+            <tbody>
+                {% if board %}
+                    {{ board | safe }}
+                {% endif %}
+            </tbody>
+        </table>
+    </main>
+{% endblock content %}

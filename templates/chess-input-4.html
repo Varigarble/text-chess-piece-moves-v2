@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+    <main class="main">
+        <h4 class="instruction">State your Column (A-H):</h4>
+        <form method="POST">
+            <p><textarea name="content" id="entry" class="form__textarea"></textarea></p>
+            <p><button type="submit" class="form__submit">Enter</button></p>
+        </form>
+        <section>
+            {% if message %}
+            <h4>{{ message }}</h4>
+            {% endif %}
+            <h3><span class="container">
+                {% if piece %}
+                    {{ piece }}
+                {% endif %}
+                {% if color %}
+                    {{ color }}
+                {% endif %}
+                {% if row %}
+                    {{ row }}
+                {% endif %}
+                {% if column %}
+                    {{ column }}
+                {% endif %}
+                {% if position %}
+                    {{ position }}
+                {% endif %}
+            </span></h3>
+                {% if valid %}
+                    <span class="valid">{{ valid | safe }}</span>
+                {% endif %}
+        </section>
+            {% if empty_board %}
+                {{ empty_board | safe }}
+            {% endif %}
+    </main>
+{% endblock content %}

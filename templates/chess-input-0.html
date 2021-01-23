@@ -1,0 +1,114 @@
+{% extends "layout.html" %}
+{% block content %}
+    <main class="main">
+        <h4>Place a piece on the board to see what squares it can move to.</h4>
+            <a href="chess-input-1"><button type="button" class="form__submit">Start</button></a>
+        <section>
+            <div class="container">
+            </div>
+        </section>
+        <table class="board">
+            <tbody>
+                <tr>
+                    <th>8</th>
+                    <td class="light">♜</td>
+                    <td class="dark">♞</td>
+                    <td class="light">♝</td>
+                    <td class="dark">♛</td>
+                    <td class="light">♚</td>
+                    <td class="dark">♝</td>
+                    <td class="light">♞</td>
+                    <td class="dark">♜</td>
+                </tr>
+                <tr>
+                    <th>7</th>
+                    <td class="dark">♟</td>
+                    <td class="light">♟</td>
+                    <td class="dark">♟</td>
+                    <td class="light">♟</td>
+                    <td class="dark">♟</td>
+                    <td class="light">♟</td>
+                    <td class="dark">♟</td>
+                    <td class="light">♟</td>
+                </tr>
+                <tr>
+                    <th>6</th>
+                    <td class="light"></td>
+                    <td class="dark"></td>
+                    <td class="light"></td>
+                    <td class="dark"></td>
+                    <td class="light"></td>
+                    <td class="dark"></td>
+                    <td class="light"></td>
+                    <td class="dark"></td>
+                </tr>
+                <tr>
+                    <th>5</th>
+                    <td class="dark"></td>
+                    <td class="light"></td>
+                    <td class="dark"></td>
+                    <td class="light"></td>
+                    <td class="dark"></td>
+                    <td class="light"></td>
+                    <td class="dark"></td>
+                    <td class="light"></td>
+                </tr>
+                <tr>
+                    <th>4</th>
+                    <td class="light"></td>
+                    <td class="dark"></td>
+                    <td class="light"></td>
+                    <td class="dark"></td>
+                    <td class="light"></td>
+                    <td class="dark"></td>
+                    <td class="light"></td>
+                    <td class="dark"></td>
+                </tr>
+                <tr>
+                    <th>3</th>
+                    <td class="dark"></td>
+                    <td class="light"></td>
+                    <td class="dark"></td>
+                    <td class="light"></td>
+                    <td class="dark"></td>
+                    <td class="light"></td>
+                    <td class="dark"></td>
+                    <td class="light"></td>
+                </tr>
+                <tr>
+                    <th>2</th>
+                    <td class="light">♙</td>
+                    <td class="dark">♙</td>
+                    <td class="light">♙</td>
+                    <td class="dark">♙</td>
+                    <td class="light">♙</td>
+                    <td class="dark">♙</td>
+                    <td class="light">♙</td>
+                    <td class="dark">♙</td>
+                </tr>
+                <tr>
+                    <th>1</th>
+                    <td class="dark">♖</td>
+                    <td class="light">♘</td>
+                    <td class="dark">♗</td>
+                    <td class="light">♕</td>
+                    <td class="dark">♔</td>
+                    <td class="light">♗</td>
+                    <td class="dark">♘</td>
+                    <td class="light">♖</td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>C</th>
+                    <th>D</th>
+                    <th>E</th>
+                    <th>F</th>
+                    <th>G</th>
+                    <th>H</th>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+{% endblock content %}
