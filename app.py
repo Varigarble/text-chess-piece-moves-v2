@@ -6,23 +6,14 @@ from contextlib import redirect_stdout
 
 def create_app():
     app = Flask(__name__)
-
-    @app.route("/", methods=['GET', 'POST'])
-    def entry_page():
-        return render_template(
-            "chess-input-0.html"
-        )
-
     piece = None
     color = None
     row = None
     column = None
     position = None
-    with open("empty_chessboard.txt", 'r', encoding='utf-8') as f:
-        empty_board = f.read()
 
-    @app.route("/chess-input-1", methods=['GET', 'POST'])
-    def input_page_1():
+    @app.route("/", methods=['GET', 'POST'])
+    def entry_page():
         nonlocal piece
         nonlocal color
         nonlocal row
@@ -38,6 +29,16 @@ def create_app():
             column = None
         if position:
             position = None
+        return render_template(
+            "chess-input-0.html"
+        )
+
+    with open("empty_chessboard.txt", 'r', encoding='utf-8') as f:
+        empty_board = f.read()
+
+    @app.route("/chess-input-1", methods=['GET', 'POST'])
+    def input_page_1():
+        nonlocal piece
         message = None
         valid = 0
         if request.method == "POST":
