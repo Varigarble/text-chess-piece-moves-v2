@@ -63,6 +63,7 @@ h1 {
 
 main {
   max-width: 450px;
+  min-width: 450px;
   margin: 0 auto;
   padding: 0 20px;
   /*margin-bottom: 150px;*/
