@@ -67,7 +67,6 @@ main {
   min-width: 450px;
   margin: 0 auto;
   padding: 0 20px;
-  /*margin-bottom: 150px;*/
 }
 
 instruction {
@@ -187,20 +186,12 @@ td {
   background:     -ms-radial-gradient(#c9a779 10%, #FFD194 90%); /* IE10 */
   background:      -o-radial-gradient(#c9a779 10%, #FFD194 90%); /* Opera 11.10+ */
   background:         radial-gradient(#c9a779 10%, #FFD194 90%); /* W3C */
-  /* text-shadow: 1px 1px 12px white; */
 }
 
 .dark {
-  /* background:    -moz-linear-gradient(135deg, #2d8a6c 10%, #185a9d 90%); /* FF3.6+ */
-  /*background: -webkit-linear-gradient(135deg, #2d8a6c 10%, #185a9d 90%); /* Chrome 10+, Saf5.1+ */
-  /*background:     -ms-linear-gradient(135deg, #2d8a6c 10%, #185a9d 90%); /* IE10 */
-  /*background:      -o-linear-gradient(135deg, #2d8a6c 10%, #185a9d 90%); /* Opera 11.10+ */
-  /*background:         linear-gradient(135deg, #2d8a6c 10%, #185a9d 90%); /* W3C */
-  /*background-position: left;*/
   background-size: 175%;
   background-image: var(--dsqr-gradient);
   animation: bg-animation 15s infinite alternate;
-  /* text-shadow: 1px 1px 12px white; */
 }
 
 .footer {
@@ -210,7 +201,6 @@ td {
 	border-top: 4px solid black;
 	color: black;
 	font-size: 14px;
-	/*position: fixed;*/
 	bottom: 0;
 	left: 0;
 	width: 100%;

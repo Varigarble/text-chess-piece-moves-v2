@@ -9,10 +9,10 @@ def create_app():
     app = Flask(__name__)
     app.secret_key = os.environ.get('SECRET_KEY')
     if app.secret_key:
-        print('using Heroku Config Vars', app.secret_key[0])
+        print('using Heroku Config Vars')
     else:
         app.secret_key = "local-test-password-123"
-        print('using local Secret Key', app.secret_key[0])
+        print('using local Secret Key')
     app.config['SESSION_TYPE'] = 'filesystem'
     piece = None
     color = None
@@ -177,7 +177,9 @@ def create_app():
 
     @app.route("/session_clear")
     def clear():
+        print(session)
         session.clear()
+        print(session)  # verify session cleared
         return redirect(url_for("entry_page"))
 
     return app
