@@ -22,16 +22,8 @@ def create_app():
 
     @app.route("/", methods=['GET', 'POST'])
     def entry_page():
-        nonlocal piece
-        nonlocal color
-        nonlocal row
-        nonlocal column
-        nonlocal position
-        piece = None
-        color = None
-        row = None
-        column = None
-        position = None
+        nonlocal piece, color, row, column, position
+        piece, color, row, column, position = None, None, None, None, None
         return render_template(
             "chess-input-0.html"
         )
@@ -180,6 +172,8 @@ def create_app():
         print(session)
         session.clear()
         print(session)  # verify session cleared
+        piece, color, row, column, position = None, None, None, None, None
+        print(piece, color, row, column, position)  # verify variables cleared
         return redirect(url_for("entry_page"))
 
     return app
