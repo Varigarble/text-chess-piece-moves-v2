@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, session
 import chessboard
 import io
 from contextlib import redirect_stdout
@@ -6,6 +6,8 @@ from contextlib import redirect_stdout
 
 def create_app():
     app = Flask(__name__)
+    app.secret_key = "session_test_password123"  # TODO: store real password in .env
+    # app.config['SECRET_KEY'] = "session_test_password123"  # TODO: store real password in .env
     piece = None
     color = None
     row = None
@@ -19,16 +21,11 @@ def create_app():
         nonlocal row
         nonlocal column
         nonlocal position
-        if piece:
-            piece = None
-        if color:
-            color = None
-        if row:
-            row = None
-        if column:
-            column = None
-        if position:
-            position = None
+        piece = None
+        color = None
+        row = None
+        column = None
+        position = None
         return render_template(
             "chess-input-0.html"
         )
@@ -44,7 +41,8 @@ def create_app():
         if request.method == "POST":
             message_piece = chessboard.piece_name_input_flask(request.form.get("content"))
             message = message_piece[0]
-            piece = message_piece[1]
+            session["piece"] = message_piece[1]
+            piece = session["piece"]
             valid = message_piece[2]
         if valid != 1:
             valid = "<p>Follow instructions to continue.</p>"
@@ -60,14 +58,15 @@ def create_app():
 
     @app.route("/chess-input-2", methods=['GET', 'POST'])
     def input_page_2():
-        nonlocal piece
         nonlocal color
+        piece = session["piece"]
         message = "Color Input:"
         valid = 0
         if request.method == "POST":
             message_color = chessboard.piece_color_input_flask(request.form.get("content"))
             message = message_color[0]
-            color = message_color[1]
+            session["color"] = message_color[1]
+            color = session["color"]
             valid = message_color[2]
         if valid != 1:
             valid = "<p>Follow instructions to continue.</p>"
@@ -84,15 +83,16 @@ def create_app():
 
     @app.route("/chess-input-3", methods=['GET', 'POST'])
     def input_page_3():
-        nonlocal piece
-        nonlocal color
         nonlocal row
+        piece = session["piece"]
+        color = session["color"]
         message = "Row Input:"
         valid = 0
         if request.method == "POST":
             message_row = chessboard.locator_row_flask(request.form.get("content"), piece, color)
             message = message_row[0]
-            row = message_row[1]
+            session["row"] = message_row[1]
+            row = session["row"]
             valid = message_row[2]
         if valid != 1:
             valid = "<p>Follow instructions to continue.</p>"
@@ -110,18 +110,20 @@ def create_app():
 
     @app.route("/chess-input-4", methods=['GET', 'POST'])
     def input_page_4():
-        nonlocal piece
-        nonlocal color
-        nonlocal row
         nonlocal column
         nonlocal position
+        piece = session["piece"]
+        color = session["color"]
+        row = session["row"]
         message = "Column Input:"
         valid = 0
         if request.method == "POST":
             message_col = chessboard.locator_column_flask(request.form.get("content"), int(row))
             message = message_col[0]
-            column = message_col[1]
-            position = message_col[2]
+            session["column"] = message_col[1]
+            column = session["column"]
+            session["position"] = message_col[2]
+            position = session["position"]
             valid = message_col[3]
         if valid != 1:
             valid = "<p>Follow instructions to continue.</p>"
@@ -141,11 +143,11 @@ def create_app():
 
     @app.route("/chess-output", methods=['GET', 'POST'])
     def output_page():
-        nonlocal piece
-        nonlocal color
-        nonlocal row
-        nonlocal column
-        nonlocal position
+        piece = session["piece"]
+        color = session["color"]
+        row = session["row"]
+        column = session["column"]
+        position = session["position"]
         message = "Done."
         attacked, capture = chessboard.locate_pieces(piece, position, color)  # calls chess_functions.py
         print_piece = chessboard.make_print_piece(piece, color)
@@ -166,4 +168,10 @@ def create_app():
             position=position,
             board=board
         )
+
+    @app.route("/session_clear")
+    def clear():
+        session.clear()
+        return redirect('/')
+
     return app
