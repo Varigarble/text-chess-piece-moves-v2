@@ -1,12 +1,13 @@
 from flask import Flask, render_template, request, redirect, session, url_for
 import chessboard
 import io
+import os
 from contextlib import redirect_stdout
 
 
 def create_app():
     app = Flask(__name__)
-    app.secret_key = "session_test_password123"  # TODO: store real password in .env
+    app.secret_key = os.environ.get('SECRET_KEY')
     app.config['SESSION_TYPE'] = 'filesystem'
     # session.init_app(app)
     piece = None
