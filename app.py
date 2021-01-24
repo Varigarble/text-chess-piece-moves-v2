@@ -7,7 +7,8 @@ from contextlib import redirect_stdout
 def create_app():
     app = Flask(__name__)
     app.secret_key = "session_test_password123"  # TODO: store real password in .env
-    # app.config['SECRET_KEY'] = "session_test_password123"  # TODO: store real password in .env
+    app.config['SESSION_TYPE'] = 'filesystem'
+    # session.init_app(app)
     piece = None
     color = None
     row = None
