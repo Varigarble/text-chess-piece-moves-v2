@@ -3,7 +3,8 @@ html {
 	background-color: #f0e4da;
 	margin: 0;
     padding: 0;
-    background: linear-gradient(to right, transparent, #f0e4da, transparent), repeating-conic-gradient(from 45deg, #FFD194 0% 25%, #f0e4da 0% 50%)
+    background: linear-gradient(to right, transparent, #f0e4da, transparent), repeating-conic-gradient(from 45deg,
+                                #FFD194 0% 25%, #f0e4da 0% 50%)
               100% / 210px 210px;
     background-position-y: top;
 }
@@ -43,7 +44,7 @@ body {
   background: #185a9d;
   color: white;
   font-style: italic;
-  font-size: 24px;
+  font-size: calc(1vw + 1vh + .5vmin);
   text-shadow: 1px 1px 12px black;
   padding: 20px 0 20px 0;
   text-align: left;
@@ -114,13 +115,15 @@ h3 {
 }
 
 .form__textarea {
-  width: 50%;
+  width: 6em;
   height: 1em;
   font-size: 18px;
   padding: 12px 12px;
   border: 3px solid black;
   background-color: #ECEBEB;
   margin-bottom: 0px;
+  overflow: hidden;
+  resize: none;
 }
 
 .form__submit {
@@ -203,7 +206,7 @@ td {
 .footer {
 	background-color: #b7a99a;
 	padding: 20px 0;
-	margin-top: 50px;
+	margin-top: 10px;
 	border-top: 4px solid black;
 	color: black;
 	font-size: 14px;

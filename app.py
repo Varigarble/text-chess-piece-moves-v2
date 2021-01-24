@@ -8,8 +8,12 @@ from contextlib import redirect_stdout
 def create_app():
     app = Flask(__name__)
     app.secret_key = os.environ.get('SECRET_KEY')
+    if app.secret_key:
+        print('using Heroku Config Vars', app.secret_key[0])
+    else:
+        app.secret_key = "local-test-password-123"
+        print('using local Secret Key', app.secret_key[0])
     app.config['SESSION_TYPE'] = 'filesystem'
-    # session.init_app(app)
     piece = None
     color = None
     row = None
