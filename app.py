@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, session, url_for
 import chessboard
 import io
 import os
+import redis
 from contextlib import redirect_stdout
 
 
@@ -13,7 +14,9 @@ def create_app():
     else:
         app.secret_key = "local-test-password-123"
         print('using local Secret Key')
-    app.config['SESSION_TYPE'] = 'filesystem'
+    r = redis.from_url(os.environ.get('REDIS_URL'), charset="utf-8", decode_responses=True)
+    # r = redis.Redis(host='localhost', port=6379, db=0)
+    app.config['SESSION_TYPE'] = 'redis'
     app.jinja_env.auto_reload = True
     app.config['TEMPLATES_AUTO_RELOAD'] = True
     piece = None
@@ -41,8 +44,11 @@ def create_app():
         if request.method == "POST":
             message_piece = chessboard.piece_name_input_flask(request.form.get("content"))
             message = message_piece[0]
-            session["piece"] = message_piece[1]
-            piece = session["piece"]
+            # session["piece"] = message_piece[1]
+            # piece = session["piece"]
+            r.set('piece', message_piece[1])
+            piece = r.get('piece')
+            print(piece)  # del
             valid = message_piece[2]
         if valid != 1:
             valid = "<p>Follow instructions to continue.</p>"
