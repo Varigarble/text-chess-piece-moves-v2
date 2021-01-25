@@ -14,6 +14,8 @@ def create_app():
         app.secret_key = "local-test-password-123"
         print('using local Secret Key')
     app.config['SESSION_TYPE'] = 'filesystem'
+    app.jinja_env.auto_reload = True
+    app.config['TEMPLATES_AUTO_RELOAD'] = True
     piece = None
     color = None
     row = None
