@@ -65,14 +65,17 @@ def create_app():
     @app.route("/chess-input-2", methods=['GET', 'POST'])
     def input_page_2():
         nonlocal color
-        piece = session["piece"]
+        # piece = session["piece"]
+        piece = r.get('piece')
         message = "Color Input:"
         valid = 0
         if request.method == "POST":
             message_color = chessboard.piece_color_input_flask(request.form.get("content"))
             message = message_color[0]
-            session["color"] = message_color[1]
-            color = session["color"]
+            # session["color"] = message_color[1]
+            # color = session["color"]
+            r.set('color', message_color[1])
+            color = r.get('color')
             valid = message_color[2]
         if valid != 1:
             valid = "<p>Follow instructions to continue.</p>"
@@ -90,15 +93,19 @@ def create_app():
     @app.route("/chess-input-3", methods=['GET', 'POST'])
     def input_page_3():
         nonlocal row
-        piece = session["piece"]
-        color = session["color"]
+        # piece = session["piece"]
+        # color = session["color"]
+        piece = r.get('piece')
+        color = r.get('color')
         message = "Row Input:"
         valid = 0
         if request.method == "POST":
             message_row = chessboard.locator_row_flask(request.form.get("content"), piece, color)
             message = message_row[0]
-            session["row"] = message_row[1]
-            row = session["row"]
+            # session["row"] = message_row[1]
+            # row = session["row"]
+            r.set('row', message_row[1])
+            row = r.get('row')
             valid = message_row[2]
         if valid != 1:
             valid = "<p>Follow instructions to continue.</p>"
@@ -118,18 +125,25 @@ def create_app():
     def input_page_4():
         nonlocal column
         nonlocal position
-        piece = session["piece"]
-        color = session["color"]
-        row = session["row"]
+        # piece = session["piece"]
+        # color = session["color"]
+        # row = session["row"]
+        piece = r.get('piece')
+        color = r.get('color')
+        row = r.get('row')
         message = "Column Input:"
         valid = 0
         if request.method == "POST":
             message_col = chessboard.locator_column_flask(request.form.get("content"), int(row))
             message = message_col[0]
-            session["column"] = message_col[1]
-            column = session["column"]
-            session["position"] = message_col[2]
-            position = session["position"]
+            # session["column"] = message_col[1]
+            # column = session["column"]
+            r.set('column', message_col[1])
+            column = r.get('column')
+            # session["position"] = message_col[2]
+            # position = session["position"]
+            r.set('position', message_col[2])
+            position = r.get('position')
             valid = message_col[3]
         if valid != 1:
             valid = "<p>Follow instructions to continue.</p>"
@@ -149,11 +163,16 @@ def create_app():
 
     @app.route("/chess-output", methods=['GET', 'POST'])
     def output_page():
-        piece = session["piece"]
-        color = session["color"]
-        row = session["row"]
-        column = session["column"]
-        position = session["position"]
+        # piece = session["piece"]
+        # color = session["color"]
+        # row = session["row"]
+        # column = session["column"]
+        # position = session["position"]
+        piece = r.get('piece')
+        color = r.get('color')
+        row = r.get('row')
+        column = r.get('column')
+        position = r.get('position')
         message = "Done."
         attacked, capture = chessboard.locate_pieces(piece, position, color)  # calls chess_functions.py
         print_piece = chessboard.make_print_piece(piece, color)
