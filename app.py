@@ -172,7 +172,7 @@ def create_app():
         color = r.get('color')
         row = r.get('row')
         column = r.get('column')
-        position = r.get('position')
+        position = int(r.get('position'))
         message = "Done."
         attacked, capture = chessboard.locate_pieces(piece, position, color)  # calls chess_functions.py
         print_piece = chessboard.make_print_piece(piece, color)
