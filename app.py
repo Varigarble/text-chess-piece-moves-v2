@@ -19,16 +19,16 @@ def create_app():
     app.config['SESSION_TYPE'] = 'redis'
     app.jinja_env.auto_reload = True
     app.config['TEMPLATES_AUTO_RELOAD'] = True
-    piece = None
-    color = None
-    row = None
-    column = None
-    position = None
+    # piece = None
+    # color = None
+    # row = None
+    # column = None
+    # position = None
 
     @app.route("/", methods=['GET', 'POST'])
     def entry_page():
-        nonlocal piece, color, row, column, position
-        piece, color, row, column, position = None, None, None, None, None
+        # nonlocal piece, color, row, column, position
+        # piece, color, row, column, position = None, None, None, None, None
         return render_template(
             "chess-input-0.html"
         )
@@ -38,8 +38,8 @@ def create_app():
 
     @app.route("/chess-input-1", methods=['GET', 'POST'])
     def input_page_1():
-        nonlocal piece
-        print("page 1 load piece: ", piece)
+        # nonlocal piece
+        # print("page 1 load piece: ", piece)
         message = None
         valid = 0
         if request.method == "POST":
@@ -65,8 +65,8 @@ def create_app():
 
     @app.route("/chess-input-2", methods=['GET', 'POST'])
     def input_page_2():
-        nonlocal color
-        print("page 2 load color: ", color)
+        # nonlocal color
+        # print("page 2 load color: ", color)
         # piece = session["piece"]
         piece = r.get('piece')
         print("page 2 load piece: ", piece)
@@ -96,8 +96,8 @@ def create_app():
 
     @app.route("/chess-input-3", methods=['GET', 'POST'])
     def input_page_3():
-        nonlocal row
-        print("page 3 load row: ", row)
+        # nonlocal row
+        # print("page 3 load row: ", row)
         # piece = session["piece"]
         # color = session["color"]
         piece = r.get('piece')
@@ -131,10 +131,10 @@ def create_app():
 
     @app.route("/chess-input-4", methods=['GET', 'POST'])
     def input_page_4():
-        nonlocal column
-        nonlocal position
-        print("page 4 load column: ", column)
-        print("page 4 load position: ", position)
+        # nonlocal column
+        # nonlocal position
+        # print("page 4 load column: ", column)
+        # print("page 4 load position: ", position)
         # piece = session["piece"]
         # color = session["color"]
         # row = session["row"]
@@ -215,6 +215,11 @@ def create_app():
         # session.clear()
         # print(session)  # verify session cleared
         r.delete("piece", "color", "row", "column", "position")
+        r.set("piece", 0)
+        r.set("color", 0)
+        r.set("row", 0)
+        r.set("column", 0)
+        r.set("position", 0)
         piece, color, row, column, position = None, None, None, None, None
         print(piece, color, row, column, position)  # verify variables cleared
         return redirect(url_for("entry_page"))
