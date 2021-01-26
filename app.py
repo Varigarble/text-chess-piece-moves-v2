@@ -40,6 +40,7 @@ def create_app():
     def input_page_1():
         # nonlocal piece
         # print("page 1 load piece: ", piece)
+        piece = None
         message = None
         valid = 0
         if request.method == "POST":
@@ -68,6 +69,7 @@ def create_app():
         # nonlocal color
         # print("page 2 load color: ", color)
         # piece = session["piece"]
+        color = None
         piece = r.get('piece')
         print("page 2 load piece: ", piece)
         message = "Color Input:"
@@ -100,6 +102,7 @@ def create_app():
         # print("page 3 load row: ", row)
         # piece = session["piece"]
         # color = session["color"]
+        row = None
         piece = r.get('piece')
         print("page 3 load piece: ", piece)
         color = r.get('color')
@@ -138,6 +141,8 @@ def create_app():
         # piece = session["piece"]
         # color = session["color"]
         # row = session["row"]
+        column = None
+        position = None
         piece = r.get('piece')
         print("page 4 load piece: ", piece)
         color = r.get('color')
