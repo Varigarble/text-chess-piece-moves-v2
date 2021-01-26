@@ -16,15 +16,15 @@ def piece_name_input_flask(app_piece):
                     'Q', 'Queen', 'R', 'Rook']
     if not piece.isalpha():
         message = "Piece names only use letters."
-        piece = None
+        piece = 0
         return message, piece, valid
     elif piece.upper() == 'K':
         message = "\"K\" what? Be more specific."
-        piece = None
+        piece = 0
         return message, piece, valid
     elif (piece.upper()[0] not in valid_pieces) and (piece.upper()[:2] not in valid_pieces):
         message = "The chess pieces are: King, Queen, Bishop, Knight, Rook, and Pawn."
-        piece = None
+        piece = 0
         return message, piece, valid
     elif piece.isalpha() and ((piece.upper()[0] in valid_pieces) or (piece.upper()[:2]) in valid_pieces):
         p: str = piece.upper()
@@ -110,7 +110,7 @@ def locator_column_flask(app_column, app_row):
         position = 0
         return message, raw_column, position, valid
     raw_column = app_column.upper()[0]
-    position = None
+    position = 0
     if not raw_column.isalpha():
         message = "Enter the input indicated."
         return message, raw_column, position, valid
