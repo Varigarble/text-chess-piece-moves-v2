@@ -214,6 +214,7 @@ def create_app():
         # print(session)
         # session.clear()
         # print(session)  # verify session cleared
+        r.delete("piece", "color", "row", "column", "position")
         piece, color, row, column, position = None, None, None, None, None
         print(piece, color, row, column, position)  # verify variables cleared
         return redirect(url_for("entry_page"))
