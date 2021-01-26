@@ -1,5 +1,5 @@
 # text-chess-piece-moves-v2
-Visit [http://varigarble.com/](http://varigarble.com/) to run this project!
+Visit [https://varigarble.com/](https://varigarble.com/) to run this project!
 
 Enter a chess piece and coordinate and this will display a chessboard showing the location of the piece and the possible 
 squares it can move to. 
@@ -9,4 +9,4 @@ file and rendered as html in a Flask template so it can be reused without dealin
 routings. The output html text is printed to stdout, which is captured and sent to a Flask template. Optional code is 
 included to print the output html to, and render from, a text file.
 
-Known issues: Heroku deployment sometimes displays previously entered data in jinja templates.
+Known issues: Heroku deployment may display previously entered data in jinja templates.
