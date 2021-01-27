@@ -8,5 +8,3 @@ This project uses the code from text-chess-piece-moves with a Flask front-end. T
 file and rendered as html in a Flask template so it can be reused without dealing with multiple Flask inheritance 
 routings. The output html text is printed to stdout, which is captured and sent to a Flask template. Optional code is 
 included to print the output html to, and render from, a text file.
-
-Known issues: Heroku deployment may display previously entered data in jinja templates.
