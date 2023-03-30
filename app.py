@@ -39,7 +39,7 @@ def create_app():
         if valid != 1:
             valid = "<p>Follow instructions to continue.</p>"
         if valid == 1:
-            valid = "<a href=\"chess-input-2\"><button type=\"submit\" class=\"form__submit\">Continue</button></a>"
+            valid = "<a href=\"chess-input-2\"><button id=\"continue\" type=\"submit\" class=\"form__submit\">Continue</button></a>"
         return render_template(
             "chess-input-1.html",
             message=message,
@@ -64,7 +64,7 @@ def create_app():
         if valid != 1:
             valid = "<p>Follow instructions to continue.</p>"
         if valid == 1:
-            valid = "<a href=\"chess-input-3\"><button type=\"submit\" class=\"form__submit\">Continue</button></a>"
+            valid = "<a href=\"chess-input-3\"><button id=\"continue\" type=\"submit\" class=\"form__submit\">Continue</button></a>"
         return render_template(
             "chess-input-2.html",
             message=message,
@@ -91,7 +91,7 @@ def create_app():
         if valid != 1:
             valid = "<p>Follow instructions to continue.</p>"
         if valid == 1:
-            valid = "<a href=\"chess-input-4\"><button type=\"submit\" class=\"form__submit\">Continue</button></a>"
+            valid = "<a href=\"chess-input-4\"><button id=\"continue\" type=\"submit\" class=\"form__submit\">Continue</button></a>"
         return render_template(
             "chess-input-3.html",
             message=message,
@@ -123,7 +123,7 @@ def create_app():
         if valid != 1:
             valid = "<p>Follow instructions to continue.</p>"
         if valid == 1:
-            valid = "<a href=\"chess-output\"><button type=\"submit\" class=\"form__submit\">Continue</button></a>"
+            valid = "<a href=\"chess-output\"><button id=\"continue\" type=\"submit\" class=\"form__submit\">Continue</button></a>"
         return render_template(
             "chess-input-4.html",
             message=message,
@@ -149,7 +149,7 @@ def create_app():
         """use this code if reading from file: 
         chessboard.print_board_file(print_piece, position, attacked, capture)
         with open("boardroom.txt", 'r', encoding='utf-8') as f:
-             board = f.read()"""
+            board = f.read()"""
         with io.StringIO() as buf, redirect_stdout(buf):
             print(chessboard.print_board_stdout(print_piece, position, attacked, capture))
             board = buf.getvalue()[0:-6]

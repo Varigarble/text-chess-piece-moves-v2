@@ -248,3 +248,13 @@ td {
 .footer__item__right:hover {
 	text-decoration: underline;
 }
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 2px 5px #185a9d;
+  }
+
+textarea:focus {
+    outline: none;
+    box-shadow: 0 0 2px 5px #185a9d;
+  }
