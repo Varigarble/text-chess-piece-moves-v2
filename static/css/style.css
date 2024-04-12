@@ -56,6 +56,20 @@ body {
   width: 25%;
 }
 
+.header__right a {
+    color: white;
+    font-size: calc(0.5vw + 0.5vh + .5vmin);
+    text-shadow: 1px 1px 1px black;
+    text-align:right;
+    text-decoration: underline;
+}
+
+.header__right_content {
+        position: absolute;
+        top: 10%;
+        right: 20%;
+}
+
 h1 {
   text-align: center;
   padding: 0px;
