@@ -54,6 +54,7 @@ body {
 .header__right {
   background: linear-gradient(to right, #185a9d, #2d8a6c, #FFD194, #f0e4da);
   width: 25%;
+  position: relative;
 }
 
 .header__right a {
@@ -211,16 +212,20 @@ td {
 .footer {
 	background-color: #b7a99a;
 	padding: 20px 0;
+    box-sizing: content-box;
 	margin-top: 0px;
 	border-top: 4px solid black;
+	position: relative;
+	bottom: 0px;
 	color: black;
+	font-family: Lato, sans-serif;
 	font-size: 14px;
 	width: 100%;
 	height: 2.6em;
 }
 
-.footer a:visited {
-    color: black;
+.footer a {
+    text-decoration: underline;
 }
 
 .footer__content {
