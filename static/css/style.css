@@ -262,6 +262,14 @@ td {
 	text-decoration: none;
 }
 
+.footer__item__left {
+    margin: 0;
+}
+
+.footer__item__middle {
+    margin: 0;
+}
+
 .footer__item__right {
 	text-align: right;
 }
