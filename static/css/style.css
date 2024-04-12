@@ -240,12 +240,14 @@ td {
 	flex-grow: 9;
 	display: flex;
 	flex-direction: column;
+	margin: 0;
 }
 
 .footer .right {
 	flex-grow: 0;
 	display: flex;
 	flex-direction: row;
+	margin: 0;
 }
 
 .footer__column {
